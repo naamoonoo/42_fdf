@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkjornra <bkjornra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: andY <andY@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 23:24:35 by hnam              #+#    #+#             */
-/*   Updated: 2019/03/20 01:43:05 by bkjornra         ###   ########.fr       */
+/*   Updated: 2019/03/26 22:09:54 by andY             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct		s_list
 # define ABS(x) ((x) < 0 ? (x) * -1 : (x))
 # define MAX_INT -2147483648
 # define IS_EXIST(x) ((x) ? 1 : 0)
-
+# define ERROR -42
 /*
 **---------------------memory handling---------------------
 */

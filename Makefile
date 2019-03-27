@@ -1,25 +1,28 @@
-NAME = fillit
-
-SRC=$(wildcard src/*.c)
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror -Iincludes
-OBJ = $(patsubst %.c, %.o, $(SRC))
+NAME = fdf
+SRC = $(wildcard src/*.c)
+OPTIONS = minilibx/
+CFLAGS = -Wall -Wextra -Werror -I includes -L src/libft -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
+OBJ = $(CFILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRC) minilibx/libmlx.a
+	gcc -o $(NAME) $(CFLAGS) $(SRC) src/libft.a
+
+minilibx/libmlx.a:
 	cd src/libft && make -f Makefile
-	mv src/libft/libft.a .
-	$(CC) -o $(NAME) $(CFLAGS) $(SRC) libft.a
+	mv src/libft/libft.a src
+	cd minilibx && make
 
 clean:
-	-cd src/libft && make clean
+	cd src/libft && make clean
+	rm -rf $(NAME)
 
-fclean: clean
-	-cd src/libft && make fclean
-	-rm -f $(NAME) 
-	-rm -f libft.a
+fclean:
+	cd src/libft && make fclean
+	cd minilibx && make clean
+	rm -rf src/libft.a
 
-re: fclean $(NAME)
+re: clean $(NAME)
 
 .PHONY: clean fclean re
